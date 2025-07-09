@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tic Tac Realm - Neon UI Edition</title>
+    <meta name="description" content="Play a visually stunning, neon-themed Tic Tac Toe online. Challenge our unbeatable AI, use hints and undos by watching ads, or play with a friend.">
+    <meta name="keywords" content="tic tac toe, neon game, online game, free game, 2 player game, AI game, logic puzzle, tic tac realm">
+    <meta name="author" content="Tic Tac Realm">
+    <meta name="theme-color" content="#1a1a2e">
+
+    <!-- NEW: Enhanced SEO Tags -->
+    <link rel="canonical" href="https://bakurealm.online">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bakurealm.online">
+    <meta property="og:title" content="Tic Tac Realm - Neon UI Edition">
+    <meta property="og:description" content="Play a visually stunning, neon-themed Tic Tac Toe online.">
+    <meta property="og:image" content="logo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bakurealm.online">
+    <meta property="twitter:title" content="Tic Tac Realm - Neon UI Edition">
+    <meta property="twitter:description" content="Play a visually stunning, neon-themed Tic Tac Toe online.">
+    <meta property="twitter:image" content="logo.jpg">
+
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <a href="index.html">
+                <!-- 
+                    INSTRUCTIONS FOR YOUR LOGO:
+                    1. Upload your 'logo.jpg' to the same folder as this index.html file.
+                    2. To show your image logo, UNCOMMENT the <img> tag below.
+                    3. To hide the text logo, COMMENT OUT the <h1> tag below.
+                -->
+                
+                <img src="logo.jpg" alt="Tic Tac Realm Logo">
+                <!-- <h1>Tic Tac Realm</h1> -->
+
+            </a>
+        </div>
+        <button class="menu-btn" id="menu-btn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </button>
+    </header>
+
+    <div class="off-screen-menu" id="off-screen-menu">
+        <nav>
+            <a href="about.html">About The Game</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </nav>
+        <div class="dark-mode-toggle">
+            <span>Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-switch">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <main>
+        <div class="game-wrapper">
+
+            <div class="game-info-bar">
+                <div class="level-display">Level: <span id="level">1</span></div>
+                <div class="timer-display">Time: <span id="timer">00:00</span></div>
+                <div class="action-icons">
+                    <button class="icon-btn" id="hint-btn" title="Get a Hint (requires ad)">
+                        <div class="icon-hint"></div>
+                    </button>
+                    <button class="icon-btn" id="undo-btn" title="Undo Last Move (requires ad)">
+                        <div class="icon-undo"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="status" id="status">Choose a mode to begin</div>
+
+            <div class="board-container">
+                <div class="board" id="board"></div>
+                <div class="win-line" id="win-line"></div>
+            </div>
+            
+            <div class="game-settings">
+                <button class="primary" onclick="controller.startGame('ai')">1 Player (vs AI)</button>
+                <button class="secondary" onclick="controller.startGame('2p')">2 Players</button>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '1537f7d29cb255f5674306c5ecd7dccf',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/1537f7d29cb255f5674306c5ecd7dccf/invoke.js"></script>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Tic Tac Realm. All rights reserved.</p>
+    </footer>
+    
+    <div id="adModal" class="ad-modal-overlay">
+        <div class="ad-modal-content">
+            <h2 id="ad-modal-title" class="modal-title">Ad Break</h2>
+            <p class="prose">This feature is supported by ads. Your game will resume after this short break.</p>
+            <div id="ad-placeholder" class="ad-container" style="min-height: 250px; display:flex; align-items:center; justify-content:center; margin: 1rem 0;">
+                
+                <!-- CHANGE: Added your ad script to the modal with appropriate dimensions -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1537f7d29cb255f5674306c5ecd7dccf',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/1537f7d29cb255f5674306c5ecd7dccf/invoke.js"></script>
+
+            </div>
+            <p id="ad-timer-text">Your reward will be ready in <strong>5</strong> seconds.</p>
+        </div>
+    </div>
+    
+    <div id="cookie-consent-banner">
+        <p>We use cookies to enhance your experience and to show personalized ads. <a href="privacy-policy.html">Learn More</a></p>
+        <button class="primary" id="accept-cookies-btn">Accept</button>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
